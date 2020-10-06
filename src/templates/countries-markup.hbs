@@ -1,12 +1,19 @@
 <section>
-    <h1>{{name}}</h1>
-    <h2>Capital: {{capital}}</h2>
-    <p>Population: {{population}}</p>
-    <p>Languages</p>
-    <ul>
-        {{#each languages}}
-        <li>{{this.name}}</li>
-        {{/each}}
-    </ul>
-    <img src="{{flag}}" alt=`photo {{name}} width="350">
+    <div class="caption-cont">
+        <h1 class="caption">{{name}}</h1>
+    </div>
+    <div class="sub">
+        <div>
+            <h2 class="capital">Capital: {{capital}}</h2>
+            <p>Population: {{population}}</p>
+            <p>Languages:</p>
+            <ul>
+                {{#each languages}}
+                <li>{{this.name}}</li>
+                <br>
+                {{/each}}
+            </ul>
+        </div>
+        <img src="{{flag}}" alt=`photo {{name}} width="300">
+    </div>
 </section>
