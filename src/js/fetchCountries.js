@@ -6,7 +6,7 @@ import callAlert from './notification';
 const inputRef = document.querySelector('.input');
 const containerRef = document.querySelector('.container');
 
-inputRef.addEventListener('input', debounce(fetchCountries, 350));
+inputRef.addEventListener('input', debounce(fetchCountries, 500));
 
 function fetchCountries(e) {
   const answer = e.target.value;
