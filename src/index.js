@@ -1,2 +1,2 @@
 import './styles.css';
-import './js/fetch';
+import './js/fetchCountries';

@@ -4,14 +4,13 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 function callAlert() {
   alert({
-    text: 'Нужно более точное название',
+    text: 'Too many matches. Be more specific',
     type: 'error',
     width: '300px',
     height: '100px',
     animation: 'smooth',
-
     hide: true,
-    delay: 200000,
+    delay: 2000,
   });
 }
 export default callAlert;

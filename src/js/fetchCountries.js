@@ -5,9 +5,10 @@ import callAlert from './notification';
 
 const inputRef = document.querySelector('.input');
 const containerRef = document.querySelector('.container');
-inputRef.addEventListener('input', debounce(handleAnswer, 350));
 
-function handleAnswer(e) {
+inputRef.addEventListener('input', debounce(fetchCountries, 350));
+
+function fetchCountries(e) {
   const answer = e.target.value;
   fetch(
     `https://restcountries.eu/rest/v2/name/${answer}?fields=name;capital;languages;population;flag`,
@@ -18,11 +19,7 @@ function handleAnswer(e) {
     .then(res => {
       const markupOne = markupTemplatesOne(res[0]);
       const markupMany = markupTemplatesMany(res);
-
       checkNumberOfCntrs(markupOne, res, markupMany);
-    })
-    .catch(error => {
-      console.log(error);
     });
 }
 
@@ -31,9 +28,8 @@ function checkNumberOfCntrs(markupOne, res, markupMany) {
     insertMarkup(markupOne);
   } else if (res.length > 1 && res.length <= 10) {
     insertMarkup(markupMany);
-  } else if (res.length > 10) {
+  } else {
     callAlert();
-    console.log('asd');
   }
 }
 
