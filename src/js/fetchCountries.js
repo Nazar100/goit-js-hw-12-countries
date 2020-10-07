@@ -5,7 +5,6 @@ import callAlert from './notification';
 
 const inputRef = document.querySelector('.input');
 const containerRef = document.querySelector('.container');
-const mainRef = document.querySelector('main');
 
 inputRef.addEventListener('input', debounce(fetchCountries, 500));
 
@@ -19,7 +18,9 @@ function fetchCountries({ target }) {
     })
     .then(data => {
       checkNumberOfCntrs(data);
-      // mainRef.addEventListener('click', clearSpace);
+    })
+    .finally(final => {
+      clearSpace();
     });
 }
 
@@ -39,13 +40,7 @@ function checkNumberOfCntrs(data) {
 function insertMarkup(markup) {
   containerRef.innerHTML = markup;
 }
-// function clearSpace({ target }) {
-//   const itemRef = document.querySelector('.item');
-//   console.log(target, itemRef);
-//   if (target !== itemRef) {
-//     containerRef.innerHTML = '';
-//   }
-// }
+
 function chooseCountry(data) {
   const listRef = document.querySelector('ul');
   listRef.addEventListener('click', ({ target }) => {
@@ -58,3 +53,9 @@ function chooseCountry(data) {
     });
   });
 }
+function clearSpace() {
+  if (inputRef.value === '') {
+    containerRef.innerHTML = '';
+  }
+}
+export default clearSpace;
