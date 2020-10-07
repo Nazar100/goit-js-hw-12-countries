@@ -100,6 +100,12 @@ li {
 }
 .item {
   font-size: 40px;
+  cursor: pointer;
+  padding-left: 15px;
+  transition: all 0.3s ease-in-out;
+}
+.item:hover {
+  background-color: rgb(108, 29, 146, 0.4);
 }
 .caption-cont {
   display: flex;
@@ -108,6 +114,7 @@ li {
 ul,
 hr {
   margin: 0;
+  padding: 0;
 }
 .pnotify {
   position: absolute;
