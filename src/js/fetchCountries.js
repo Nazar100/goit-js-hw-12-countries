@@ -16,17 +16,17 @@ function fetchCountries(e) {
     .then(response => {
       return response.json();
     })
-    .then(res => {
-      const markupOne = markupTemplatesOne(res[0]);
-      const markupMany = markupTemplatesMany(res);
-      checkNumberOfCntrs(markupOne, res, markupMany);
+    .then(data => {
+      checkNumberOfCntrs(data);
     });
 }
 
-function checkNumberOfCntrs(markupOne, res, markupMany) {
-  if (res.length === 1) {
+function checkNumberOfCntrs(data) {
+  if (data.length === 1) {
+    const markupOne = markupTemplatesOne(data[0]);
     insertMarkup(markupOne);
-  } else if (res.length > 1 && res.length <= 10) {
+  } else if (data.length > 1 && data.length <= 10) {
+    const markupMany = markupTemplatesMany(data);
     insertMarkup(markupMany);
   } else {
     callAlert();
