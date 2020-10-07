@@ -58,4 +58,3 @@ function clearSpace() {
     containerRef.innerHTML = '';
   }
 }
-export default clearSpace;

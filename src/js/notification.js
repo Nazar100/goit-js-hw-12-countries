@@ -8,7 +8,8 @@ function callAlert() {
     type: 'error',
     width: '300px',
     height: '100px',
-    animation: 'smooth',
+    animation: 'fade',
+    animateSpeed: 'normal',
     hide: true,
     delay: 2000,
   });
