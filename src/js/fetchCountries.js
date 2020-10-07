@@ -7,6 +7,7 @@ const inputRef = document.querySelector('.input');
 const containerRef = document.querySelector('.container');
 
 inputRef.addEventListener('input', debounce(fetchCountries, 500));
+inputRef.addEventListener('blur', clearSpace);
 
 function fetchCountries(e) {
   const answer = e.target.value;
@@ -35,4 +36,7 @@ function checkNumberOfCntrs(data) {
 
 function insertMarkup(markup) {
   containerRef.innerHTML = markup;
+}
+function clearSpace() {
+  containerRef.innerHTML = '';
 }
