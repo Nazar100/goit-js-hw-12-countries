@@ -2,6 +2,7 @@ import markupTemplatesOne from '../templates/countries-markup.hbs';
 import markupTemplatesMany from '../templates/variants.hbs';
 import debounce from 'lodash.debounce';
 import callAlert from './notification';
+const axios = require('axios').default;
 
 const inputRef = document.querySelector('.input');
 const containerRef = document.querySelector('.container');
@@ -10,16 +11,17 @@ inputRef.addEventListener('input', debounce(fetchCountries, 500));
 
 function fetchCountries({ target }) {
   const answer = target.value;
-  fetch(
-    `https://restcountries.eu/rest/v2/name/${answer}?fields=name;capital;languages;population;flag`,
-  )
+  axios
+    .get(
+      `https://restcountries.eu/rest/v2/name/${answer}?fields=name;capital;languages;population;flag`,
+    )
     .then(response => {
-      return response.json();
+      return response;
     })
-    .then(data => {
+    .then(({ data }) => {
       checkNumberOfCntrs(data);
     })
-    .finally(final => {
+    .finally(() => {
       clearSpace();
     });
 }
@@ -32,7 +34,7 @@ function checkNumberOfCntrs(data) {
     const markupMany = markupTemplatesMany(data);
     insertMarkup(markupMany);
     chooseCountry(data);
-  } else {
+  } else if (data.length > 10) {
     callAlert();
   }
 }
